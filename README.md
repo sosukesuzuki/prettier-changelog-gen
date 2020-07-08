@@ -5,8 +5,23 @@ Generates changelog for https://github.com/prettier/prettier repo.
 ## Usage
 
 ```sh
-# Category: javascript
-# Pull Request number: 3333
-# GitHub username: sosukesuzuki
-$ npx prettier-changelog-gen javascript 3333 sosukesuzuki
+$ prettier-changelog-gen --category=javascript --prNumber=3333 --username=sosukesuzuki
 ```
+
+## Options
+
+### `category`(Optional)
+
+A category of your change. default `"javascript"`. See https://github.com/prettier/prettier/tree/master/changelog_unreleased.
+
+## `prNumber`
+
+A Pull Request number.
+
+## `username`
+
+Your GitHub user name.
+
+## `prettierDir`(Optional)
+
+Your Prettier direcotyr path. default `process.cwd()`.
