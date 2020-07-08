@@ -5,29 +5,35 @@
 const fs = require("fs");
 const path = require("path");
 
-const [category, prNumber, username] = process.argv.slice(2);
+const { category, prNumber, username, prettierDir } = require("minimist")(
+  process.argv.slice(2)
+);
 
-const categorySet = new Set([
-  "angular",
-  "api",
-  "cli",
-  "css",
-  "flow",
-  "graphql",
-  "handlebars",
-  "html",
-  "javascript",
-  "json",
-  "lwc",
-  "markdown",
-  "mdx",
-  "scss",
-  "typescript",
-  "vue",
-  "yaml",
-]);
+if (category == null) {
+  category = "javascript";
+}
 
-if (!categorySet.has(category)) {
+if (
+  ![
+    "angular",
+    "api",
+    "cli",
+    "css",
+    "flow",
+    "graphql",
+    "handlebars",
+    "html",
+    "javascript",
+    "json",
+    "lwc",
+    "markdown",
+    "mdx",
+    "scss",
+    "typescript",
+    "vue",
+    "yaml",
+  ].includes(category)
+) {
   console.error(`Unknown category: ${category}`);
   process.exit(1);
 }
@@ -42,13 +48,26 @@ if (username == null) {
   process.exit(1);
 }
 
+if (prettierDir == null) {
+  prettierDir = process.cwd();
+}
+
+try {
+  fs.statSync(prettierDir);
+} catch (error) {
+  if (error.code === "ENOENT") {
+    console.error(`${prettierDir} does not exist`);
+    process.exit(1);
+  }
+}
+
 const changelogPath = path.resolve(
-  process.cwd(),
+  prettierDir,
   `./changelog_unreleased/${category}`,
   `./pr-${prNumber}.md`
 );
 
-function getExt(category) {
+function getFileExt(category) {
   switch (category) {
     case "angular":
     case "handlebars":
@@ -67,6 +86,8 @@ function getExt(category) {
       return "json";
     case "markdown":
       return "md";
+    case "typescript":
+      return "ts";
     default:
       return category;
   }
@@ -75,7 +96,7 @@ function getExt(category) {
 const gitHubURL = "https://github.com";
 const data = `#### ([#${prNumber}](${gitHubURL}/prettier/prettier/pull/${prNumber}) by [@${username}](${gitHubURL}/${username}))
 
-\`\`\`${getExt(category)}
+\`\`\`${getFileExt(category)}
 \`\`\`
 `;
 
