@@ -5,6 +5,7 @@ const printCodeBlock = require("./codeblock");
  * @param {String} prNumber
  * @param {String} username
  * @param {String} category
+ * @returns {String}
  */
 function printChangelog(prNumber, username, category) {
   const gitHubURL = "https://github.com";
