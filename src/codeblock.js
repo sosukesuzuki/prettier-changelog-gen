@@ -50,4 +50,8 @@ ${printComment("Prettier master")}
 \`\`\``;
 }
 
-module.exports = printCodeBlock;
+module.exports = {
+  getCodeBlockFileExt,
+  genPrintComment,
+  printCodeBlock,
+};

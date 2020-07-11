@@ -10,9 +10,9 @@ $ prettier-changelog-gen --category=javascript --prNumber=3333 --username=sosuke
 
 ## Options
 
-### `category`(Optional)
+### `category`
 
-A category of your change. default `"javascript"`. See https://github.com/prettier/prettier/tree/master/changelog_unreleased.
+A category of your change. See https://github.com/prettier/prettier/tree/master/changelog_unreleased.
 
 ### `prNumber`
 
@@ -24,4 +24,4 @@ Your GitHub user name.
 
 ### `prettierDir`(Optional)
 
-Your Prettier direcotyr path. default `process.cwd()`.
+Your Prettier directory path. default `process.cwd()`.
