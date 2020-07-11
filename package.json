@@ -8,9 +8,11 @@
   "author": "Sosuke Suzuki <aosukeke@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test": "jest"
   },
   "devDependencies": {
+    "jest": "^26.1.0",
     "prettier": "^2.0.5"
   },
   "dependencies": {

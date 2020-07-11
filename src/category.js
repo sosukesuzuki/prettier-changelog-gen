@@ -46,6 +46,14 @@ const categories = [
     name: "typescript",
     ext: "ts",
   },
+  {
+    name: "mdx",
+    ext: "mdx",
+  },
+  {
+    name: "html",
+    ext: "html",
+  },
 ];
 
 module.exports = {
