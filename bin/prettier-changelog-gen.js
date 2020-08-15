@@ -40,7 +40,7 @@ try {
     `./changelog_unreleased/${category}`,
     `./pr-${prNumber}.md`
   );
-  const data = genChangelog(category, username, prNumber);
+  const data = genChangelog(category, prNumber, username);
   fs.writeFileSync(changelogPath, data);
   console.log("DONE");
 } catch (error) {
