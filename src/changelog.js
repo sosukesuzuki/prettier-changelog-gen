@@ -14,6 +14,4 @@ function printChangelog(prNumber, username, category) {
   return titleSection + "\n" + codeBlockSection + "\n";
 }
 
-module.exports = {
-  printChangelog,
-};
+module.exports = printChangelog;
